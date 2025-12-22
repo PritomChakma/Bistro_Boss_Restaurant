@@ -1,4 +1,5 @@
 import PopularMenu from "../../Components/PopularMenu/PopularMenu";
+import Rating from "../../Components/Rating/Rating";
 import Banner from "./Banner";
 import Category from "./Category";
 import FeaturedMenu from "./FeaturedMenu/FeaturedMenu";
@@ -12,6 +13,7 @@ const Home = () => {
         <PopularMenu></PopularMenu>
       </div>
       <FeaturedMenu></FeaturedMenu>
+      <Rating></Rating>
     </div>
   );
 };
