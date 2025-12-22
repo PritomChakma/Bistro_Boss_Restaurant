@@ -4,7 +4,7 @@ const MenuCard = ({ items }) => {
     <div className="flex space-x-4 items-center">
       <img
         style={{ borderRadius: "0 200Px 200px 200px" }}
-        className="w-[100px]"
+        className="w-28"
         src={image}
         alt=""
       />
