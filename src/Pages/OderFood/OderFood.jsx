@@ -5,11 +5,12 @@ import "react-tabs/style/react-tabs.css";
 import oderFoodImg from "../../assets/shop/banner2.jpg";
 import UseMenu from "../../Hooks/UseMenu";
 import Cover from "../../Shared/Cover/Cover";
+import OrderTabs from "../../Shared/OrderTabs/OrderTabs";
 
 const OderFood = () => {
   const [tabIndex, setTabIndex] = useState(0);
   const [menu] = UseMenu();
-  const offered = menu.filter((items) => items.category == "offered");
+  const drinks = menu.filter((items) => items.category == "drinks");
   const dessert = menu.filter((items) => items.category == "dessert");
   const Pizza = menu.filter((items) => items.category == "pizza");
   const Salad = menu.filter((items) => items.category == "salad");
@@ -28,7 +29,7 @@ const OderFood = () => {
       {/* tabs */}
 
       <Tabs
-        className="my-16"
+        className="my-16 md:w-10/12 mx-auto"
         selectedIndex={tabIndex}
         onSelect={(index) => setTabIndex(index)}
       >
@@ -36,11 +37,24 @@ const OderFood = () => {
           <Tab>Salad</Tab>
           <Tab>Pizza</Tab>
           <Tab>Soup</Tab>
-          <Tab>Title 2</Tab>
-          <Tab>Title 1</Tab>
+          <Tab>Dessert</Tab>
+          <Tab>Drinks</Tab>
         </TabList>
-        <TabPanel></TabPanel>
-        <TabPanel></TabPanel>
+        <TabPanel>
+          <OrderTabs items={Salad}></OrderTabs>
+        </TabPanel>
+        <TabPanel>
+          <OrderTabs items={Pizza}></OrderTabs>
+        </TabPanel>
+        <TabPanel>
+          <OrderTabs items={Soup}></OrderTabs>
+        </TabPanel>
+        <TabPanel>
+          <OrderTabs items={dessert}></OrderTabs>
+        </TabPanel>
+        <TabPanel>
+          <OrderTabs items={drinks}></OrderTabs>
+        </TabPanel>
       </Tabs>
     </div>
   );

@@ -1,20 +1,30 @@
-const FoodCard = () => {
+const FoodCard = ({ item }) => {
+  const { image, name, recipe, price } = item;
+
   return (
-    <div className="card bg-base-100 w-96 shadow-sm">
-      <figure>
-        <img
-          src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-          alt="Shoes"
-        />
-      </figure>
-      <div className="card-body">
-        <h2 className="card-title">Card Title</h2>
-        <p>
-          A card component has a figure, a body part, and inside body there are
-          title and actions parts
+    <div className="w-80 bg-base-100 shadow-md rounded-md overflow-hidden">
+      {/* Image with price badge */}
+      <div className="relative">
+        <img src={image} alt={name} className="w-full h-56 object-cover" />
+
+        <span className="absolute top-3 right-3 bg-black text-white text-sm px-3 py-1 rounded-md">
+          ${price}
+        </span>
+      </div>
+
+      {/* Content */}
+      <div className="p-5">
+        <h2 className="text-xl text-center font-semibold">{name}</h2>
+
+        <p className="text-gray-600 text-center text-sm mt-2">
+          {recipe}
         </p>
-        <div className="card-actions justify-end">
-          <button className="btn btn-primary">Buy Now</button>
+
+        {/* Button */}
+        <div className="flex justify-center mt-6">
+          <button className="px-8 py-2 border border-yellow-700 text-yellow-700 rounded-md hover:bg-yellow-700 hover:text-white transition">
+            ADD TO CART
+          </button>
         </div>
       </div>
     </div>
