@@ -11,13 +11,13 @@ const Cover = ({ img, title, subTitle }) => {
 
     >
       <div
-        className="hero h-[700px]"
+        className="hero h-[600px]"
         style={{
         }}
       >
         <div className="hero-overlay"></div>
-        <div className="hero-content text-white text-center">
-          <div className="max-w-md">
+        <div className=" text-white text-center">
+          <div className="">
             <h1 className="mb-5 text-5xl font-bold uppercase">{title}</h1>
             <p className="mb-5 text-xl font-semibold">{subTitle}</p>
           </div>

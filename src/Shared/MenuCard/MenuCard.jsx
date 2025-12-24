@@ -1,5 +1,5 @@
-const MenuCard = ({ items }) => {
-  const { image, name, recipe, price } = items;
+const MenuCard = ({ item }) => {
+  const { image, name, recipe, price } = item;
   return (
     <div className="flex space-x-4 items-center">
       <img
