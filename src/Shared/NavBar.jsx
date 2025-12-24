@@ -1,14 +1,19 @@
+import { Link, NavLink } from "react-router-dom";
+
 const NavBar = () => {
   const Links = (
     <>
       <li>
-        <a>Item 1</a>
+        <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <a>Parent</a>
+        <NavLink to="/contact">Contact Us</NavLink>
       </li>
       <li>
-        <a>Item 3</a>
+        <NavLink to="/menu">Our Menu</NavLink>
+      </li>
+      <li>
+        <NavLink to="/shop">Our Shop</NavLink>
       </li>
     </>
   );
@@ -41,7 +46,12 @@ const NavBar = () => {
             {Links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <div className="uppercase">
+          <Link to="/">
+            <h1 className="md:text-xl font-bold">BISTRO BOSS</h1>
+            <p className="text-sm font-semibold">R e s t a u r a n t</p>
+          </Link>
+        </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{Links}</ul>
