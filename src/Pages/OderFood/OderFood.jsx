@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
+import { useParams } from "react-router-dom";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import oderFoodImg from "../../assets/shop/banner2.jpg";
@@ -8,13 +9,17 @@ import Cover from "../../Shared/Cover/Cover";
 import OrderTabs from "../../Shared/OrderTabs/OrderTabs";
 
 const OderFood = () => {
-  const [tabIndex, setTabIndex] = useState(0);
+  const categories = ["salad", "pizza", "soup", "dessert", "drinks"];
+  const { category } = useParams();
+  const initialIndex = categories.indexOf(category);
+  const [tabIndex, setTabIndex] = useState(initialIndex);
   const [menu] = UseMenu();
+  console.log(category);
   const drinks = menu.filter((items) => items.category == "drinks");
   const dessert = menu.filter((items) => items.category == "dessert");
-  const Pizza = menu.filter((items) => items.category == "pizza");
-  const Salad = menu.filter((items) => items.category == "salad");
-  const Soup = menu.filter((items) => items.category == "soup");
+  const pizza = menu.filter((items) => items.category == "pizza");
+  const salad = menu.filter((items) => items.category == "salad");  
+  const soup = menu.filter((items) => items.category == "soup");
   return (
     <div>
       <Helmet>
@@ -41,13 +46,13 @@ const OderFood = () => {
           <Tab>Drinks</Tab>
         </TabList>
         <TabPanel>
-          <OrderTabs items={Salad}></OrderTabs>
+          <OrderTabs items={salad}></OrderTabs>
         </TabPanel>
         <TabPanel>
-          <OrderTabs items={Pizza}></OrderTabs>
+          <OrderTabs items={pizza}></OrderTabs>
         </TabPanel>
         <TabPanel>
-          <OrderTabs items={Soup}></OrderTabs>
+          <OrderTabs items={soup}></OrderTabs>
         </TabPanel>
         <TabPanel>
           <OrderTabs items={dessert}></OrderTabs>

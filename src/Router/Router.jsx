@@ -18,7 +18,7 @@ export const router = createBrowserRouter([
         element:<Menu></Menu>
       },
       {
-        path: "/oder",
+        path: "/oder/:category",
         element:<OderFood></OderFood>
       },
     ],

@@ -5,7 +5,7 @@ import Banner from "./Banner";
 import CallUs from "./CallUs";
 import Category from "./Category";
 import FeaturedMenu from "./FeaturedMenu/FeaturedMenu";
-import HeroBanner from "./HeroBanner";
+import HeroBanner from "../Menu/HeroBanner";
 
 const Home = () => {
   return (

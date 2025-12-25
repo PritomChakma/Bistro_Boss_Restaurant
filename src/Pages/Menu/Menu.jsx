@@ -14,9 +14,9 @@ const Menu = () => {
   const [menu] = UseMenu();
   const offered = menu.filter((items) => items.category == "offered");
   const dessert = menu.filter((items) => items.category == "dessert");
-  const Pizza = menu.filter((items) => items.category == "pizza");
-  const Salad = menu.filter((items) => items.category == "salad");
-  const Soup = menu.filter((items) => items.category == "soup");
+  const pizza = menu.filter((items) => items.category == "pizza");
+  const salad = menu.filter((items) => items.category == "salad");
+  const soup = menu.filter((items) => items.category == "soup");
 
   return (
     <div>
@@ -50,7 +50,7 @@ const Menu = () => {
         title="Pizza"
         subTitle="Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
         img={PizzaImg}
-        items={Pizza}
+        items={pizza}
       ></MenuCategory>
 
       {/* Salad  */}
@@ -58,7 +58,7 @@ const Menu = () => {
         title="Salad"
         subTitle="Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
         img={SaladImg}
-        items={Salad}
+        items={salad}
       ></MenuCategory>
 
       {/* Soup  */}
@@ -66,7 +66,7 @@ const Menu = () => {
         title="Soup"
         subTitle="Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
         img={SoupImg}
-        items={Soup}
+        items={soup}
       ></MenuCategory>
     </div>
   );
