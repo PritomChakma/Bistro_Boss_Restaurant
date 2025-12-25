@@ -8,3 +8,10 @@
     background-position: center;
     background-repeat: no-repeat;
 }
+
+.login{
+   background-image: url("/src/assets/others/authentication.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;  
+}
