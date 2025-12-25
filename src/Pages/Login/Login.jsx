@@ -2,6 +2,14 @@ import LoginBg from "../../assets/others/authentication.png";
 import LoginImg from "../../assets/others/authentication1.png";
 
 const Login = () => {
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+  };
+
   return (
     <div
       className="min-h-screen flex items-center justify-center p-6"
@@ -22,22 +30,22 @@ const Login = () => {
             />
           </div>
 
-          {/* Form Card */}
+          {/* Form */}
           <div className="w-full lg:w-1/2">
-            <h2 className="text-3xl font-bold text-neutral mb-2">
-              Welcome Back 👋
-            </h2>
+            <h2 className="text-3xl font-bold mb-2">Welcome Back 👋</h2>
             <p className="text-sm text-gray-500 mb-6">
               Login to manage your account
             </p>
 
-            <form className="space-y-5">
+            <form onSubmit={handleLogin} className="space-y-5">
               <div>
                 <label className="label font-semibold text-sm">Email</label>
                 <input
                   type="email"
-                  className="input input-bordered w-full focus:outline-none focus:ring-2 focus:ring-neutral focus:border-neutral"
+                  name="email"
+                  className="input input-bordered w-full"
                   placeholder="Enter your email"
+                  required
                 />
               </div>
 
@@ -45,15 +53,15 @@ const Login = () => {
                 <label className="label font-semibold text-sm">Password</label>
                 <input
                   type="password"
-                  className="input input-bordered w-full focus:outline-none focus:ring-2 focus:ring-neutral focus:border-neutral"
+                  name="password"
+                  className="input input-bordered w-full"
                   placeholder="Enter your password"
+                  required
                 />
               </div>
 
               <div className="flex justify-end">
-                <a className="link link-hover text-sm text-neutral">
-                  Forgot password?
-                </a>
+                <a className="link link-hover text-sm">Forgot password?</a>
               </div>
 
               <button className="btn btn-neutral w-full mt-2 hover:scale-[1.02] transition">
@@ -63,9 +71,7 @@ const Login = () => {
 
             <p className="mt-4 text-center text-sm text-gray-600">
               New here?{" "}
-              <a className="link link-hover font-medium text-neutral">
-                Create an account
-              </a>
+              <a className="link link-hover font-medium">Create an account</a>
             </p>
           </div>
         </div>
