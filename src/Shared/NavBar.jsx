@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { FaShoppingCart } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Components/Provider/AuthProvider";
 
@@ -24,6 +25,17 @@ const NavBar = () => {
       </li>
       <li>
         <NavLink to="/oder/salad">Order Food</NavLink>
+      </li>
+      <li>
+        <NavLink to="/">
+          <button className="relative flex items-center px-4">
+            <FaShoppingCart className="text-xl" />
+
+            <span className="absolute -top-2 -right-2 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-red-500 rounded-full shadow-lg">
+              +0
+            </span>
+          </button>
+        </NavLink>
       </li>
     </>
   );
@@ -73,7 +85,7 @@ const NavBar = () => {
           ) : (
             <NavLink to="/login">Login</NavLink>
           )}
-          <p>{user.displayName}</p>
+          <p>{user?.displayName}</p>
         </div>
       </div>
     </div>
