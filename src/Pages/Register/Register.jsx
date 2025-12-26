@@ -1,50 +1,38 @@
 import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import LoginBg from "../../assets/others/authentication.png";
-import LoginImg from "../../assets/others/authentication1.png";
+import { Link } from "react-router-dom";
+import RegisterBg from "../../assets/others/authentication.png";
+import RegisterImg from "../../assets/others/authentication1.png";
 import { AuthContext } from "../../Components/Provider/AuthProvider";
 
-const Login = () => {
-  const { signInUser } = useContext(AuthContext);
-  const navigate = useNavigate();
+const Register = () => {
+  const { createUser } = useContext(AuthContext);
 
-  const handleLogin = (e) => {
+  const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
+    const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
-
-    signInUser(email, password)
-      .then((res) => {
-        navigate("/");
-        toast("Login Successfully", {
-          position: "top-center",
-          autoClose: 5000,
-        });
-        console.log(res);
+    console.log(name, email, password);
+    createUser(email, password)
+      .then((result) => {
+        console.log("User created:", result.user);
       })
       .catch((error) => {
-        toast(error.message, {
-          position: "top-center",
-          autoClose: 5000,
-          type: "error",
-        });
-        console.log(error);
+        console.log("Error:", error.message);
       });
   };
 
   return (
     <div>
       <Helmet>
-        <title>Bistro Boss | Login</title>
+        <title>Bistro Boss | Register</title>
       </Helmet>
       <div
         className="min-h-screen flex items-center justify-center p-6"
         style={{
-          backgroundImage: `url(${LoginBg})`,
+          backgroundImage: `url(${RegisterBg})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -54,20 +42,31 @@ const Login = () => {
             {/* Image */}
             <div className="w-full lg:w-1/2 flex justify-center">
               <img
-                src={LoginImg}
-                alt="login-img"
+                src={RegisterImg}
+                alt="register-img"
                 className="w-80 drop-shadow-lg"
               />
             </div>
 
             {/* Form */}
             <div className="w-full lg:w-1/2">
-              <h2 className="text-3xl font-bold mb-2">Welcome Back 👋</h2>
+              <h2 className="text-3xl font-bold mb-2">Create Account 🚀</h2>
               <p className="text-sm text-gray-500 mb-6">
-                Login to manage your account
+                Register to get started
               </p>
 
-              <form onSubmit={handleLogin} className="space-y-5">
+              <form onSubmit={handleRegister} className="space-y-5">
+                <div>
+                  <label className="label font-semibold text-sm">Name</label>
+                  <input
+                    type="text"
+                    name="name"
+                    className="input input-bordered w-full"
+                    placeholder="Enter your name"
+                    required
+                  />
+                </div>
+
                 <div>
                   <label className="label font-semibold text-sm">Email</label>
                   <input
@@ -87,24 +86,20 @@ const Login = () => {
                     type="password"
                     name="password"
                     className="input input-bordered w-full"
-                    placeholder="Enter your password"
+                    placeholder="Create a password"
                     required
                   />
                 </div>
 
-                <div className="flex justify-end">
-                  <a className="link link-hover text-sm">Forgot password?</a>
-                </div>
-
                 <button className="btn btn-neutral w-full mt-2 hover:scale-[1.02] transition">
-                  Login
+                  Register
                 </button>
               </form>
 
               <p className="mt-4 text-center text-sm text-gray-600">
-                New here?{" "}
-                <Link to="/register" className="link link-hover font-medium">
-                  Create an account
+                Already have an account?{" "}
+                <Link to="/login" className="link link-hover font-medium">
+                  Login
                 </Link>
               </p>
             </div>
@@ -115,4 +110,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
