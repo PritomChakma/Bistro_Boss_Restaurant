@@ -2,8 +2,10 @@ import { useContext } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Components/Provider/AuthProvider";
+import useCart from "../Hooks/useCart";
 
 const NavBar = () => {
+  const [cart] = useCart();
   const { user, logout } = useContext(AuthContext);
   console.log(user);
   const handleLogout = () => {
@@ -32,7 +34,7 @@ const NavBar = () => {
             <FaShoppingCart className="text-xl" />
 
             <span className="absolute -top-2 -right-2 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-red-500 rounded-full shadow-lg">
-              +0
+              +{cart?.length}
             </span>
           </button>
         </NavLink>
