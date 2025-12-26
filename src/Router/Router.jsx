@@ -5,6 +5,7 @@ import Login from "../Pages/Login/Login";
 import Menu from "../Pages/Menu/Menu";
 import OderFood from "../Pages/OderFood/OderFood";
 import Register from "../Pages/Register/Register";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -17,7 +18,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/menu",
-        element: <Menu></Menu>,
+        element: (
+          <PrivateRoute>
+            <Menu></Menu>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/oder/:category",

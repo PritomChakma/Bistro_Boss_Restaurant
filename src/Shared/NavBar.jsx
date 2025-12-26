@@ -3,12 +3,12 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Components/Provider/AuthProvider";
 
 const NavBar = () => {
-  const { user,  logout } = useContext(AuthContext);
-
+  const { user, logout } = useContext(AuthContext);
+  console.log(user);
   const handleLogout = () => {
-     logout()
-     .then(res => console.log(res))
-     .then(error => console.log(error))
+    logout()
+      .then((res) => console.log(res))
+      .then((error) => console.log(error));
   };
 
   const Links = (
@@ -69,14 +69,11 @@ const NavBar = () => {
       <div className="navbar-end ">
         <div className="btn">
           {user ? (
-            <button onClick={handleLogout} >
-              Logout
-            </button>
+            <button onClick={handleLogout}>Logout</button>
           ) : (
-            <NavLink to="/login" >
-              Login
-            </NavLink>
-          )}{" "}
+            <NavLink to="/login">Login</NavLink>
+          )}
+          <p>{user.displayName}</p>
         </div>
       </div>
     </div>

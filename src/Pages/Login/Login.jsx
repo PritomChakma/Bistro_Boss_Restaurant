@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 import LoginBg from "../../assets/others/authentication.png";
 import LoginImg from "../../assets/others/authentication1.png";
@@ -9,6 +9,9 @@ import { AuthContext } from "../../Components/Provider/AuthProvider";
 const Login = () => {
   const { signInUser } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const LocationFrom = location.state?.from?.pathname || "/";
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -19,7 +22,7 @@ const Login = () => {
 
     signInUser(email, password)
       .then((res) => {
-        navigate("/");
+        navigate(LocationFrom, { replace: true });
         toast("Login Successfully", {
           position: "top-center",
           autoClose: 5000,

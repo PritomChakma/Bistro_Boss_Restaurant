@@ -1,26 +1,37 @@
 import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import RegisterBg from "../../assets/others/authentication.png";
 import RegisterImg from "../../assets/others/authentication1.png";
 import { AuthContext } from "../../Components/Provider/AuthProvider";
 
 const Register = () => {
-  const { createUser } = useContext(AuthContext);
-
+  const { createUser, profileUpdate } = useContext(AuthContext);
+  const navigate = useNavigate();
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
     const email = form.email.value;
+    const photo = form.photo.value;
     const password = form.password.value;
-    console.log(name, email, password);
+    console.log(name, email, photo, password);
+
     createUser(email, password)
       .then((result) => {
         console.log("User created:", result.user);
+
+        profileUpdate(name, photo)
+          .then(() => {
+            console.log("Profile Updated");
+          })
+          .catch((error) => {
+            console.log("Profile update failed:", error.message);
+          });
+        navigate("/");
       })
       .catch((error) => {
-        console.log("Error:", error.message);
+        console.log("Register failed:", error.message);
       });
   };
 
@@ -54,7 +65,6 @@ const Register = () => {
               <p className="text-sm text-gray-500 mb-6">
                 Register to get started
               </p>
-
               <form onSubmit={handleRegister} className="space-y-5">
                 <div>
                   <label className="label font-semibold text-sm">Name</label>
@@ -75,6 +85,19 @@ const Register = () => {
                     className="input input-bordered w-full"
                     placeholder="Enter your email"
                     required
+                  />
+                </div>
+
+                {/* 📌 New added Input for Photo URL */}
+                <div>
+                  <label className="label font-semibold text-sm">
+                    Photo URL
+                  </label>
+                  <input
+                    type="text"
+                    name="photo"
+                    className="input input-bordered w-full"
+                    placeholder="Enter your profile photo URL"
                   />
                 </div>
 
